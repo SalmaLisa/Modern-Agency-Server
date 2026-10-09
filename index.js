@@ -8,11 +8,9 @@ const connectDB = require("./models/config");
 
 const app = express();
 
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
-  })
-);
+app.use(cors({
+  origin: "https://modern-agency-taupe.vercel.app"
+}));
 
 app.use(express.json({ limit: "1mb" }));
 
@@ -58,7 +56,7 @@ async function startServer() {
   await connectDB();
 
   app.listen(process.env.PORT || 5000, () => {
-    console.log(`{API running at http://localhost:${process.env.PORT}}`);
+    console.log(`{API running at http://localhost:{process.env.PORT}}`);
   });
 }
 
