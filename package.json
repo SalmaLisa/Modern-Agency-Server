@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "script":"node index.js"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +16,11 @@
     "express": "^5.2.1",
     "mongodb": "^7.7.0",
     "mongoose": "^9.11.1"
+  },
+  "devDependencies": {
+    "bcryptjs": "^3.0.3",
+    "connect-mongo": "^6.0.0",
+    "express-session": "^1.19.0",
+    "nodemon": "^3.1.14"
   }
 }
