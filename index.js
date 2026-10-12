@@ -60,6 +60,12 @@ app.use(
 },
   })
 );
+console.log("SESSION COOKIE CONFIG:", {
+  nodeEnv: process.env.NODE_ENV,
+  isProduction,
+  sameSite: isProduction ? "none" : "lax",
+  secure: isProduction,
+});
 
 app.use("/api/auth", authRoutes);
 
