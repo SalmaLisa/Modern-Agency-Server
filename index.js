@@ -22,7 +22,7 @@ app.use(
     credentials: true,
   })
 );
-
+console.log("CLIENT_URL:", JSON.stringify(process.env.CLIENT_URL));
 app.use(express.json({ limit: "1mb" }));
 
 // Session configuration
