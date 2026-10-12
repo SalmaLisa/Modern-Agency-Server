@@ -15,14 +15,14 @@ const app = express();
 const isProduction = process.env.NODE_ENV === "production";
 
 app.set("trust proxy", isProduction ? 1 : false);
-
+console.log("CLIENT_URL:", JSON.stringify(process.env.CLIENT_URL));
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
     credentials: true,
   })
 );
-console.log("CLIENT_URL:", JSON.stringify(process.env.CLIENT_URL));
+
 app.use(express.json({ limit: "1mb" }));
 
 // Session configuration
