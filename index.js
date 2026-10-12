@@ -15,13 +15,28 @@ const app = express();
 const isProduction = process.env.NODE_ENV === "production";
 
 app.set("trust proxy", isProduction ? 1 : false);
-console.log("CLIENT_URL:", JSON.stringify(process.env.CLIENT_URL));
+
+
+const cors = require("cors");
+
+const allowedOrigins = [
+  process.env.CLIENT_URL?.replace(/\/+$/, ""),
+  "http://localhost:3000",
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Origin not allowed by CORS"));
+    },
     credentials: true,
   })
 );
+
 
 app.use(express.json({ limit: "1mb" }));
 
